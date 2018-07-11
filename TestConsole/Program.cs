@@ -89,13 +89,13 @@ namespace TestConsole
                 do
                 {
                     Console.WriteLine("Enter Age: ");
-                    int v = 0;
+                    int valueReceiver = 0;
 
-                    isInt = Int32.TryParse(Console.ReadLine(), out v);
+                    isInt = Int32.TryParse(Console.ReadLine(), out valueReceiver);
                     if (isInt)
                     {
-                        student.Age = v;
-                        isInt = true;
+                        student.Age = valueReceiver;
+
                     }else{
                         Console.WriteLine("Entered age is not a number, please try again. ");
                     }
@@ -151,9 +151,13 @@ namespace TestConsole
                 {
                     string shouldTryResponse = Console.ReadLine();
                     if (shouldTryResponse.ToLower().Trim().Equals("n"))
+                    {
                         shouldViewAnotherStudent = false;
+                    }
                     else if (shouldTryResponse.ToLower().Trim().Equals("y"))
+                    {
                         shouldViewAnotherStudent = true;
+                    }
                     else
                     {
                         Console.WriteLine("Sorry I did not understand your response, Do you want to view another student info? y/n");
@@ -167,7 +171,9 @@ namespace TestConsole
         static void ViewAllStudents(){
 
             if (studentsArr.Count == 0)
+            {
                 Console.WriteLine("No Students Enrolled Yet.");
+            }
                 
             foreach(Student student in studentsArr){
                 student.PrintInfo();
