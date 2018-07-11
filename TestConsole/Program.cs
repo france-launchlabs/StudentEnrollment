@@ -66,17 +66,16 @@ namespace TestConsole
                     Console.WriteLine("Enter Student Id: ");
                     searchId = Console.ReadLine();
 
+                    Student checkStudent = studentsArr.Find((obj) => obj.StudentId.Equals(searchId));
+                    isExistingStudent = checkStudent != null;
 
-                    for (int index = 0; index < studentsArr.Count; index++)
+                    if (isExistingStudent)
                     {
-                        Student studentIteration = studentsArr[index];
-                        if (studentIteration.StudentId.Equals(searchId))
-                        {
-                            isExistingStudent = true;
-                            break;
-                        }
+                        Console.WriteLine("Student with student id: {0} already exist. Please try again.", searchId);
                     }
+
                 } while (isExistingStudent);
+
                 student.StudentId = searchId;
 
                 Console.WriteLine("Enter First Name: ");
@@ -86,7 +85,7 @@ namespace TestConsole
                 student.LastName = Console.ReadLine();
 
 
-                bool isInt=false;
+                bool isInt = false;
                 do
                 {
                     Console.WriteLine("Enter Age: ");
@@ -134,17 +133,9 @@ namespace TestConsole
                 Console.WriteLine("Enter Student Id:");
 
                 string studentId = Console.ReadLine();
-                Student student = null;
+                Student student = studentsArr.Find((obj) => obj.StudentId.Equals(studentId));;
 
-                for (int index = 0; index < studentsArr.Count; index++)
-                {
-                    Student studentIteration = studentsArr[index];
-                    if (studentIteration.StudentId.Equals(studentId))
-                    {
-                        student = studentIteration;
-                        break;
-                    }
-                }
+
 
                 if (student != null)
                 {
